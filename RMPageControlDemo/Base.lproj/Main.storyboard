@@ -117,6 +117,7 @@
                     <navigationItem key="navigationItem" title="Lets try!" id="Zqf-O2-vQ4"/>
                     <connections>
                         <outlet property="horizontalPageControl" destination="9Hn-9g-Wmw" id="kwG-dk-cJ2"/>
+                        <outlet property="pageCollectionView" destination="yIQ-BV-aBF" id="Q5Q-Jg-Jk7"/>
                         <outlet property="verticalPageControl" destination="blB-CI-UsH" id="h1u-uo-493"/>
                     </connections>
                 </viewController>

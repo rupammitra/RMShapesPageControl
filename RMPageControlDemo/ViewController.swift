@@ -10,13 +10,16 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var pageCollectionView: UICollectionView!
     @IBOutlet weak var horizontalPageControl: RMSquarePageControl!
     @IBOutlet weak var verticalPageControl: RMSquarePageControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-
+        
+        horizontalPageControl.numberOfPages = pageCollectionView.numberOfItemsInSection(0)
+        verticalPageControl.numberOfPages = pageCollectionView.numberOfItemsInSection(0)
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,7 +31,7 @@ class ViewController: UIViewController {
 extension ViewController: UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 10
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
