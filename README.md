@@ -11,3 +11,5 @@
 
 1. Vertical Configuration: Make the view width narrower and the height lengthier.
 2. Horizontal Configuration: Make the view width lengthier and the height narrower.
+
+![alt tag](https://github.com/rupammitra/RMSquarePageControl/blob/master/Inspectables/Screen%20Shot%202016-08-21%20at%2000.22.14.png)
