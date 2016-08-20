@@ -23,7 +23,7 @@
 		FCE934971D68BD8600824DBE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FCE9349A1D68BD8600824DBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FCE9349C1D68BD8600824DBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FCE934A21D68BD9A00824DBE /* RMSquarePageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMSquarePageControl.swift; sourceTree = "<group>"; };
+		FCE934A21D68BD9A00824DBE /* RMSquarePageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMSquarePageControl.swift; path = RMPageControlDemo/RMSquarePageControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +40,7 @@
 		FCE934841D68BD8600824DBE = {
 			isa = PBXGroup;
 			children = (
+				FCE934A21D68BD9A00824DBE /* RMSquarePageControl.swift */,
 				FCE9348F1D68BD8600824DBE /* RMPageControlDemo */,
 				FCE9348E1D68BD8600824DBE /* Products */,
 			);
@@ -61,7 +62,6 @@
 				FCE934941D68BD8600824DBE /* Main.storyboard */,
 				FCE934971D68BD8600824DBE /* Assets.xcassets */,
 				FCE934991D68BD8600824DBE /* LaunchScreen.storyboard */,
-				FCE934A21D68BD9A00824DBE /* RMSquarePageControl.swift */,
 				FCE9349C1D68BD8600824DBE /* Info.plist */,
 			);
 			path = RMPageControlDemo;
