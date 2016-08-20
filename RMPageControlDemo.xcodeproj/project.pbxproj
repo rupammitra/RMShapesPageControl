@@ -12,7 +12,7 @@
 		FCE934961D68BD8600824DBE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCE934941D68BD8600824DBE /* Main.storyboard */; };
 		FCE934981D68BD8600824DBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCE934971D68BD8600824DBE /* Assets.xcassets */; };
 		FCE9349B1D68BD8600824DBE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCE934991D68BD8600824DBE /* LaunchScreen.storyboard */; };
-		FCE934A31D68BD9A00824DBE /* RMSquarePageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE934A21D68BD9A00824DBE /* RMSquarePageControl.swift */; };
+		FCE934A71D68E5C900824DBE /* RMSquarePageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE934A61D68E5C900824DBE /* RMSquarePageControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +23,7 @@
 		FCE934971D68BD8600824DBE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FCE9349A1D68BD8600824DBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FCE9349C1D68BD8600824DBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FCE934A21D68BD9A00824DBE /* RMSquarePageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RMSquarePageControl.swift; path = RMPageControlDemo/RMSquarePageControl.swift; sourceTree = "<group>"; };
+		FCE934A61D68E5C900824DBE /* RMSquarePageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMSquarePageControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,7 +40,7 @@
 		FCE934841D68BD8600824DBE = {
 			isa = PBXGroup;
 			children = (
-				FCE934A21D68BD9A00824DBE /* RMSquarePageControl.swift */,
+				FCE934A61D68E5C900824DBE /* RMSquarePageControl.swift */,
 				FCE9348F1D68BD8600824DBE /* RMPageControlDemo */,
 				FCE9348E1D68BD8600824DBE /* Products */,
 			);
@@ -139,8 +139,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCE934931D68BD8600824DBE /* ViewController.swift in Sources */,
+				FCE934A71D68E5C900824DBE /* RMSquarePageControl.swift in Sources */,
 				FCE934911D68BD8600824DBE /* AppDelegate.swift in Sources */,
-				FCE934A31D68BD9A00824DBE /* RMSquarePageControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
