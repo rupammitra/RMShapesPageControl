@@ -18,8 +18,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        horizontalPageControl.numberOfPages = pageCollectionView.numberOfItemsInSection(0)
-        verticalPageControl.numberOfPages = pageCollectionView.numberOfItemsInSection(0)
+        horizontalPageControl.numberOfPages = pageCollectionView.numberOfItems(inSection: 0)
+        verticalPageControl.numberOfPages = pageCollectionView.numberOfItems(inSection: 0)
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,13 +30,13 @@ class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDataSource {
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(String(UICollectionViewCell), forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath)
         cell.backgroundColor = UIColor.randomColor()
         return cell
     }
@@ -44,7 +44,7 @@ extension ViewController: UICollectionViewDataSource {
 
 extension ViewController: UICollectionViewDelegate {
     
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         
         let page = scrollView.contentOffset.x / scrollView.frame.width
         horizontalPageControl.currentPage = Int(page)

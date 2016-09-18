@@ -11,20 +11,20 @@ import UIKit
 @IBDesignable
 class RMSquarePageControl: UIControl {
 
-    private let kDotLength: CGFloat = 4.0
-    private let kDotSpace: CGFloat = 12.0
+    fileprivate let kDotLength: CGFloat = 4.0
+    fileprivate let kDotSpace: CGFloat = 12.0
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = UIColor.clear
     }
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
-        self.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = UIColor.clear
     }
     
-    private var _numberOfPages: Int = 0
+    fileprivate var _numberOfPages: Int = 0
     @IBInspectable var numberOfPages: Int {
         get {
             return _numberOfPages
@@ -36,14 +36,14 @@ class RMSquarePageControl: UIControl {
             self.currentPage = min(max(0, self.currentPage), self.numberOfPages - 1)
             self.setNeedsDisplay()
             if hidesForSinglePage == true && numOfPages < 2 {
-                self.hidden = true
+                self.isHidden = true
             }else {
-                self.hidden = false
+                self.isHidden = false
             }
         }
     }
     
-    private var _currentPage: Int = 0
+    fileprivate var _currentPage: Int = 0
     @IBInspectable var currentPage: Int {
         get {
             return _currentPage
@@ -61,7 +61,7 @@ class RMSquarePageControl: UIControl {
         }
     }
     
-    private var _hidesForSinglePage: Bool = false
+    fileprivate var _hidesForSinglePage: Bool = false
     @IBInspectable var hidesForSinglePage: Bool {
         get {
             return _hidesForSinglePage
@@ -70,12 +70,12 @@ class RMSquarePageControl: UIControl {
             _hidesForSinglePage = hide
             
             if self.hidesForSinglePage == true && self.numberOfPages < 2 {
-                self.hidden = true
+                self.isHidden = true
             }
         }
     }
     
-    private var _defersCurrentPageDisplay: Bool = false
+    fileprivate var _defersCurrentPageDisplay: Bool = false
     var defersCurrentPageDisplay: Bool {
         get {
             return _defersCurrentPageDisplay
@@ -85,7 +85,7 @@ class RMSquarePageControl: UIControl {
         }
     }
     
-    private var _currentPageColor: UIColor!
+    fileprivate var _currentPageColor: UIColor!
     @IBInspectable var currentPageColor: UIColor! {
         get{
             return _currentPageColor
@@ -96,7 +96,7 @@ class RMSquarePageControl: UIControl {
         }
     }
     
-    private var _otherPagesColor: UIColor!
+    fileprivate var _otherPagesColor: UIColor!
     @IBInspectable var otherPagesColor: UIColor! {
         get{
             return _otherPagesColor
@@ -107,7 +107,7 @@ class RMSquarePageControl: UIControl {
         }
     }
     
-    private var _indicatorLength: CGFloat = 4.0
+    fileprivate var _indicatorLength: CGFloat = 4.0
     @IBInspectable var indicatorLength: CGFloat {
         get{
             return _indicatorLength
@@ -118,7 +118,7 @@ class RMSquarePageControl: UIControl {
         }
     }
     
-    private var _indicatorSpace: CGFloat = 12.0
+    fileprivate var _indicatorSpace: CGFloat = 12.0
     @IBInspectable var indicatorSpace: CGFloat {
         get{
             return _indicatorSpace
@@ -131,13 +131,13 @@ class RMSquarePageControl: UIControl {
     
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
-    final override func drawRect(rect: CGRect) {
-        super.drawRect(rect)
+    final override func draw(_ rect: CGRect) {
+        super.draw(rect)
         // Drawing code
-        let context: CGContextRef = UIGraphicsGetCurrentContext()!
+        let context: CGContext = UIGraphicsGetCurrentContext()!
         
-        CGContextSaveGState(context)
-        CGContextSetAllowsAntialiasing(context, true)
+        context.saveGState()
+        context.setAllowsAntialiasing(true)
         
         let length = (self.indicatorLength > 0) ? self.indicatorLength : kDotLength
         let space = (self.indicatorSpace > 0) ? self.indicatorSpace : kDotSpace
@@ -148,12 +148,12 @@ class RMSquarePageControl: UIControl {
         var x: CGFloat = 0.0
         var y: CGFloat = 0.0
         
-        if CGRectGetHeight(self.frame) > CGRectGetWidth(self.frame) {
-            x = CGRectGetMidX(currentBounds) - length / 2
-            y = CGRectGetMidY(currentBounds) - dotsWidth / 2
+        if self.frame.height > self.frame.width {
+            x = currentBounds.midX - length / 2
+            y = currentBounds.midY - dotsWidth / 2
         }else {
-            x = CGRectGetMidX(currentBounds) - dotsWidth / 2
-            y = CGRectGetMidY(currentBounds) - length / 2
+            x = currentBounds.midX - dotsWidth / 2
+            y = currentBounds.midY - length / 2
         }
         
         let drawOnColor: UIColor = (self.currentPageColor != nil) ? self.currentPageColor : UIColor(white: 1.0, alpha: 1.0)
@@ -164,14 +164,14 @@ class RMSquarePageControl: UIControl {
             let dotRect: CGRect = CGRect(x: x, y: y, width: length, height: length)
 
             if i == self.currentPage {
-                CGContextSetFillColorWithColor(context, drawOnColor.CGColor)
-                CGContextFillRect(context, dotRect)
+                context.setFillColor(drawOnColor.cgColor)
+                context.fill(dotRect)
             }else{
-                CGContextSetFillColorWithColor(context, drawOffColor.CGColor)
-                CGContextFillRect(context, dotRect)
+                context.setFillColor(drawOffColor.cgColor)
+                context.fill(dotRect)
             }
             
-            if CGRectGetHeight(self.frame) > CGRectGetWidth(self.frame) {
+            if self.frame.height > self.frame.width {
                 y += length + space
             }else {
                 x += length + space
@@ -179,10 +179,10 @@ class RMSquarePageControl: UIControl {
         }
         
         // restore the context
-        CGContextRestoreGState(context)
+        context.restoreGState()
     }
     
-    private func updateCurrentPageDisplay() {
+    fileprivate func updateCurrentPageDisplay() {
         
         if self.defersCurrentPageDisplay == false {
             return
@@ -190,10 +190,10 @@ class RMSquarePageControl: UIControl {
         setNeedsDisplay()
     }
     
-    private func sizeForNumberOfPages(pageCount: NSInteger) -> CGSize {
+    fileprivate func sizeForNumberOfPages(_ pageCount: NSInteger) -> CGSize {
         
         let length: CGFloat = (self.indicatorLength > 0) ? self.indicatorLength : kDotLength
         let space: CGFloat = (self.indicatorSpace > 0) ? self.indicatorSpace : kDotSpace
-        return CGSizeMake(max(44.0, length + 4.0), CGFloat(pageCount) * length + CGFloat((pageCount - 1)) * space + 44.0)
+        return CGSize(width: max(44.0, length + 4.0), height: CGFloat(pageCount) * length + CGFloat((pageCount - 1)) * space + 44.0)
     }
 }
