@@ -20,6 +20,7 @@ class ViewController: UIViewController {
         
         horizontalPageControl.numberOfPages = pageCollectionView.numberOfItems(inSection: 0)
         verticalPageControl.numberOfPages = pageCollectionView.numberOfItems(inSection: 0)
+        verticalPageControl.indicatorType = .square
     }
 
     override func didReceiveMemoryWarning() {
