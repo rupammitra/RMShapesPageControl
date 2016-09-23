@@ -1,6 +1,6 @@
 # RMSquarePageControl
 
-![alt tag](https://github.com/rupammitra/RMSquarePageControl/blob/master/Screenshots/RMSquarePageControl.gif)
+![alt tag](https://github.com/rupammitra/RMSquarePageControl/blob/master/Screenshots/RMSquarePageControl.gif) ![alt tag](https://github.com/rupammitra/RMSquarePageControl/blob/master/Screenshots/Circle.png)
 
 ## Usage
 
