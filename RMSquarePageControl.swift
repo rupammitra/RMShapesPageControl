@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum IndicatorType: Int {
+    case square = 1
+    case circle = 2
+}
+
 @IBDesignable
 class RMSquarePageControl: UIControl {
 
@@ -24,18 +29,20 @@ class RMSquarePageControl: UIControl {
         self.backgroundColor = UIColor.clear
     }
     
-    fileprivate var _numberOfPages: Int = 0
-    @IBInspectable var numberOfPages: Int {
-        get {
-            return _numberOfPages
+    var indicatorType: IndicatorType = .square
+    @IBInspectable var indicator: Int = 1 {
+        didSet {
+            indicatorType = IndicatorType(rawValue: indicator)!
         }
-        set (numOfPages){
-            _numberOfPages = max(0, numOfPages)
+    }
+    
+    @IBInspectable var numberOfPages: Int = 0 {
+        didSet {
             let center = self.center
             self.center = center
-            self.currentPage = min(max(0, self.currentPage), self.numberOfPages - 1)
+            self.currentPage = min(max(0, self.currentPage), numberOfPages - 1)
             self.setNeedsDisplay()
-            if hidesForSinglePage == true && numOfPages < 2 {
+            if hidesForSinglePage == true && numberOfPages < 2 {
                 self.isHidden = true
             }else {
                 self.isHidden = false
@@ -43,88 +50,50 @@ class RMSquarePageControl: UIControl {
         }
     }
     
-    fileprivate var _currentPage: Int = 0
-    @IBInspectable var currentPage: Int {
-        get {
-            return _currentPage
-        }
-        set (pageNumber){
-            if self.currentPage == pageNumber {
+    @IBInspectable var currentPage: Int = 0 {
+        willSet {
+            if currentPage == newValue {
                 return
             }
-            
-           _currentPage = min(max(0, pageNumber), self.numberOfPages - 1)
-            
-            if self.defersCurrentPageDisplay == false {
+        }
+        didSet {
+            currentPage = min(max(0, currentPage), numberOfPages - 1)
+            if defersCurrentPageDisplay == false {
                 setNeedsDisplay()
             }
         }
     }
     
-    fileprivate var _hidesForSinglePage: Bool = false
-    @IBInspectable var hidesForSinglePage: Bool {
-        get {
-            return _hidesForSinglePage
-        }
-        set (hide){
-            _hidesForSinglePage = hide
-            
-            if self.hidesForSinglePage == true && self.numberOfPages < 2 {
-                self.isHidden = true
+    @IBInspectable var hidesForSinglePage: Bool = false {
+        didSet {
+            if hidesForSinglePage == true && numberOfPages < 2 {
+                isHidden = true
             }
         }
     }
     
-    fileprivate var _defersCurrentPageDisplay: Bool = false
-    var defersCurrentPageDisplay: Bool {
-        get {
-            return _defersCurrentPageDisplay
-        }
-        set (defers){
-            _defersCurrentPageDisplay = defers
-        }
-    }
+    var defersCurrentPageDisplay: Bool = false
     
-    fileprivate var _currentPageColor: UIColor!
-    @IBInspectable var currentPageColor: UIColor! {
-        get{
-            return _currentPageColor
-        }
-        set (onColor) {
-            _currentPageColor = onColor
+    @IBInspectable var currentPageColor: UIColor? {
+        didSet {
             setNeedsDisplay()
         }
     }
     
-    fileprivate var _otherPagesColor: UIColor!
-    @IBInspectable var otherPagesColor: UIColor! {
-        get{
-            return _otherPagesColor
-        }
-        set (offColor){
-            _otherPagesColor = offColor
+    @IBInspectable var otherPagesColor: UIColor? {
+        didSet {
             setNeedsDisplay()
         }
     }
     
-    fileprivate var _indicatorLength: CGFloat = 4.0
-    @IBInspectable var indicatorLength: CGFloat {
-        get{
-            return _indicatorLength
-        }
-        set (length) {
-            _indicatorLength = length
+    @IBInspectable var indicatorLength: CGFloat = 4.0 {
+        didSet {
             setNeedsDisplay()
         }
     }
     
-    fileprivate var _indicatorSpace: CGFloat = 12.0
-    @IBInspectable var indicatorSpace: CGFloat {
-        get{
-            return _indicatorSpace
-        }
-        set (space) {
-            _indicatorSpace = space
+    @IBInspectable var indicatorSpace: CGFloat = 12.0 {
+        didSet {
             setNeedsDisplay()
         }
     }
@@ -139,16 +108,16 @@ class RMSquarePageControl: UIControl {
         context.saveGState()
         context.setAllowsAntialiasing(true)
         
-        let length = (self.indicatorLength > 0) ? self.indicatorLength : kDotLength
-        let space = (self.indicatorSpace > 0) ? self.indicatorSpace : kDotSpace
+        let length = (indicatorLength > 0) ? indicatorLength : kDotLength
+        let space = (indicatorSpace > 0) ? indicatorSpace : kDotSpace
 
-        let currentBounds = self.bounds
-        let dotsWidth = CGFloat(self.numberOfPages) * length + CGFloat(max(0, self.numberOfPages - 1)) * space
+        let currentBounds = bounds
+        let dotsWidth = CGFloat(numberOfPages) * length + CGFloat(max(0, numberOfPages - 1)) * space
         
         var x: CGFloat = 0.0
         var y: CGFloat = 0.0
         
-        if self.frame.height > self.frame.width {
+        if frame.height > frame.width {
             x = currentBounds.midX - length / 2
             y = currentBounds.midY - dotsWidth / 2
         }else {
@@ -156,19 +125,19 @@ class RMSquarePageControl: UIControl {
             y = currentBounds.midY - length / 2
         }
         
-        let drawOnColor: UIColor = (self.currentPageColor != nil) ? self.currentPageColor : UIColor(white: 1.0, alpha: 1.0)
-        let drawOffColor: UIColor = (self.otherPagesColor != nil) ? self.otherPagesColor : UIColor(white: 0.7, alpha: 0.5)
+        let drawOnColor: UIColor = (currentPageColor != nil) ? currentPageColor! : UIColor(white: 1.0, alpha: 1.0)
+        let drawOffColor: UIColor = (otherPagesColor != nil) ? otherPagesColor! : UIColor(white: 0.7, alpha: 0.5)
         
-        for i in 0 ..< self.numberOfPages {
+        for i in 0 ..< numberOfPages {
             
             let dotRect: CGRect = CGRect(x: x, y: y, width: length, height: length)
-
+            
             if i == self.currentPage {
                 context.setFillColor(drawOnColor.cgColor)
-                context.fill(dotRect)
+                indicatorType == .square ? context.fill(dotRect) : context.fillEllipse(in: dotRect)
             }else{
                 context.setFillColor(drawOffColor.cgColor)
-                context.fill(dotRect)
+                indicatorType == .square ? context.fill(dotRect) : context.fillEllipse(in: dotRect)
             }
             
             if self.frame.height > self.frame.width {
@@ -183,8 +152,7 @@ class RMSquarePageControl: UIControl {
     }
     
     fileprivate func updateCurrentPageDisplay() {
-        
-        if self.defersCurrentPageDisplay == false {
+        if defersCurrentPageDisplay == false {
             return
         }
         setNeedsDisplay()
@@ -192,8 +160,8 @@ class RMSquarePageControl: UIControl {
     
     fileprivate func sizeForNumberOfPages(_ pageCount: NSInteger) -> CGSize {
         
-        let length: CGFloat = (self.indicatorLength > 0) ? self.indicatorLength : kDotLength
-        let space: CGFloat = (self.indicatorSpace > 0) ? self.indicatorSpace : kDotSpace
+        let length: CGFloat = (indicatorLength > 0) ? indicatorLength : kDotLength
+        let space: CGFloat = (indicatorSpace > 0) ? indicatorSpace : kDotSpace
         return CGSize(width: max(44.0, length + 4.0), height: CGFloat(pageCount) * length + CGFloat((pageCount - 1)) * space + 44.0)
     }
 }
