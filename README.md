@@ -1,4 +1,4 @@
-# RMSquarePageControl
+# RMShapesPageControl
 
 ![alt tag](https://github.com/rupammitra/RMSquarePageControl/blob/master/Screenshots/Circle.png)![alt tag](https://github.com/rupammitra/RMSquarePageControl/blob/master/Screenshots/RMSquarePageControl.gif)
 
