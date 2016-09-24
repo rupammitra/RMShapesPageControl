@@ -11,8 +11,8 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var pageCollectionView: UICollectionView!
-    @IBOutlet weak var horizontalPageControl: RMSquarePageControl!
-    @IBOutlet weak var verticalPageControl: RMSquarePageControl!
+    @IBOutlet weak var horizontalPageControl: RMShapesPageControl!
+    @IBOutlet weak var verticalPageControl: RMShapesPageControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +20,6 @@ class ViewController: UIViewController {
         
         horizontalPageControl.numberOfPages = pageCollectionView.numberOfItems(inSection: 0)
         verticalPageControl.numberOfPages = pageCollectionView.numberOfItems(inSection: 0)
-        verticalPageControl.indicatorType = .square
     }
 
     override func didReceiveMemoryWarning() {

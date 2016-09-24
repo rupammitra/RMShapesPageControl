@@ -8,13 +8,20 @@
 
 import UIKit
 
+enum Direction: Int {
+    case positive = 1
+    case negative = 2
+}
+
 enum IndicatorType: Int {
     case square = 1
     case circle = 2
+    case trianglePositive = 3
+    case triangleNegative = 4
 }
 
 @IBDesignable
-class RMSquarePageControl: UIControl {
+class RMShapesPageControl: UIControl {
 
     fileprivate let kDotLength: CGFloat = 4.0
     fileprivate let kDotSpace: CGFloat = 12.0
@@ -134,10 +141,10 @@ class RMSquarePageControl: UIControl {
             
             if i == self.currentPage {
                 context.setFillColor(drawOnColor.cgColor)
-                indicatorType == .square ? context.fill(dotRect) : context.fillEllipse(in: dotRect)
+                createShapes(inContext: context, forDotRect: dotRect)
             }else{
                 context.setFillColor(drawOffColor.cgColor)
-                indicatorType == .square ? context.fill(dotRect) : context.fillEllipse(in: dotRect)
+                createShapes(inContext: context, forDotRect: dotRect)
             }
             
             if self.frame.height > self.frame.width {
@@ -149,6 +156,33 @@ class RMSquarePageControl: UIControl {
         
         // restore the context
         context.restoreGState()
+    }
+    
+    func createShapes(inContext context: CGContext, forDotRect dotRect: CGRect) {
+        switch indicatorType {
+        case .square:
+            context.fill(dotRect)
+        case .circle:
+            context.fillEllipse(in: dotRect)
+        case .trianglePositive:
+            createTriangle(drawRect: dotRect, inDirection: .positive)
+        case .triangleNegative:
+            createTriangle(drawRect: dotRect, inDirection: .negative)
+        }
+    }
+    
+    func createTriangle(drawRect: CGRect, inDirection direction: Direction) {
+        let trianglePath = UIBezierPath()
+        if self.frame.height > self.frame.width {
+            trianglePath.move(to: CGPoint(x: drawRect.midX, y:drawRect.minY))
+            trianglePath.addLine(to: CGPoint(x:direction == .positive ? drawRect.maxX : drawRect.minX, y:drawRect.midY))
+            trianglePath.addLine(to: CGPoint(x:drawRect.midX, y:drawRect.maxY))
+        }else {
+            trianglePath.move(to: CGPoint(x: drawRect.minX, y:drawRect.midY))
+            trianglePath.addLine(to: CGPoint(x:drawRect.midX, y:direction == .positive ? drawRect.minY : drawRect.maxY))
+            trianglePath.addLine(to: CGPoint(x:drawRect.maxX, y:drawRect.midY))
+        }
+        trianglePath.fill()
     }
     
     fileprivate func updateCurrentPageDisplay() {

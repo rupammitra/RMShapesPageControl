@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Hn-9g-Wmw" customClass="RMSquarePageControl" customModule="RMPageControlDemo" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Hn-9g-Wmw" customClass="RMShapesPageControl" customModule="RMPageControlDemo" customModuleProvider="target">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="JII-ae-86r"/>
@@ -48,11 +48,11 @@
                                         <integer key="value" value="2"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="indicator">
-                                        <integer key="value" value="2"/>
+                                        <integer key="value" value="3"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="blB-CI-UsH" customClass="RMSquarePageControl" customModule="RMPageControlDemo" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="blB-CI-UsH" customClass="RMShapesPageControl" customModule="RMPageControlDemo" customModuleProvider="target">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="Nly-eU-u8P"/>
@@ -60,7 +60,7 @@
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="numberOfPages">
-                                        <integer key="value" value="5"/>
+                                        <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="currentPage">
                                         <integer key="value" value="0"/>
@@ -76,7 +76,7 @@
                                         <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="indicatorSpace">
-                                        <real key="value" value="10"/>
+                                        <real key="value" value="12"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="indicatorType">
                                         <integer key="value" value="2"/>
@@ -125,9 +125,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Lets try!" id="Zqf-O2-vQ4"/>
                     <connections>
-                        <outlet property="horizontalPageControl" destination="9Hn-9g-Wmw" id="kwG-dk-cJ2"/>
+                        <outlet property="horizontalPageControl" destination="9Hn-9g-Wmw" id="taQ-SI-92F"/>
                         <outlet property="pageCollectionView" destination="yIQ-BV-aBF" id="Q5Q-Jg-Jk7"/>
-                        <outlet property="verticalPageControl" destination="blB-CI-UsH" id="h1u-uo-493"/>
+                        <outlet property="verticalPageControl" destination="blB-CI-UsH" id="8bA-qD-eoT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
