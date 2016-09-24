@@ -36,7 +36,12 @@ class RMShapesPageControl: UIControl {
         self.backgroundColor = UIColor.clear
     }
     
-    var indicatorType: IndicatorType = .square
+    var indicatorType: IndicatorType = .square {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
+    
     @IBInspectable var indicator: Int = 1 {
         didSet {
             indicatorType = IndicatorType(rawValue: indicator)!

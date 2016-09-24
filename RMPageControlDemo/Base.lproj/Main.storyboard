@@ -18,11 +18,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Hn-9g-Wmw" customClass="RMShapesPageControl" customModule="RMPageControlDemo" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d6o-yb-7T1" customClass="RMShapesPageControl" customModule="RMPageControlDemo" customModuleProvider="target">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="JII-ae-86r"/>
-                                    <constraint firstAttribute="width" constant="262" id="Q3d-5Z-eGw"/>
+                                    <constraint firstAttribute="width" constant="262" id="c1k-H0-5fZ"/>
+                                    <constraint firstAttribute="height" constant="25" id="c86-yp-41P"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="numberOfPages">
@@ -39,7 +39,7 @@
                                         <color key="value" red="0.19376453760000001" green="0.50850099329999998" blue="0.85232251879999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="indicatorLength">
-                                        <real key="value" value="10"/>
+                                        <real key="value" value="8"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="indicatorSpace">
                                         <real key="value" value="15"/>
@@ -48,15 +48,15 @@
                                         <integer key="value" value="2"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="indicator">
-                                        <integer key="value" value="3"/>
+                                        <integer key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="blB-CI-UsH" customClass="RMShapesPageControl" customModule="RMPageControlDemo" customModuleProvider="target">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="25" id="Nly-eU-u8P"/>
-                                    <constraint firstAttribute="height" constant="240" id="Znw-MI-Mbo"/>
+                                    <constraint firstAttribute="height" constant="240" id="Bae-pA-d5B"/>
+                                    <constraint firstAttribute="width" constant="25" id="zKK-SJ-cUl"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="numberOfPages">
@@ -73,7 +73,7 @@
                                         <color key="value" red="0.19376453760000001" green="0.50850099329999998" blue="0.85232251879999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="indicatorLength">
-                                        <real key="value" value="5"/>
+                                        <real key="value" value="8"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="indicatorSpace">
                                         <real key="value" value="12"/>
@@ -86,19 +86,88 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yIQ-BV-aBF">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PT4-nj-Sbj" customClass="RMShapesPageControl" customModule="RMPageControlDemo" customModuleProvider="target">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="3Bs-sW-Yqi"/>
-                                    <constraint firstAttribute="height" constant="200" id="GlT-M9-eSn"/>
+                                    <constraint firstAttribute="height" constant="240" id="7QV-cI-SV0"/>
+                                    <constraint firstAttribute="width" constant="25" id="9dA-os-Ev7"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="lQt-M7-jsn">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="numberOfPages">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="currentPage">
+                                        <integer key="value" value="0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="hidesForSinglePage" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="currentPageColor">
+                                        <color key="value" red="0.9767052531" green="0.60546392199999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="otherPagesColor">
+                                        <color key="value" red="0.19376453760000001" green="0.50850099329999998" blue="0.85232251879999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="indicatorLength">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="indicatorSpace">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="indicatorType">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="indicator">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Hn-9g-Wmw" customClass="RMShapesPageControl" customModule="RMPageControlDemo" customModuleProvider="target">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="262" id="1Jl-Xl-n0L"/>
+                                    <constraint firstAttribute="height" constant="25" id="8uf-zs-CeI"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="numberOfPages">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="currentPage">
+                                        <integer key="value" value="0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="hidesForSinglePage" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="currentPageColor">
+                                        <color key="value" red="0.9767052531" green="0.60546392199999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="otherPagesColor">
+                                        <color key="value" red="0.19376453760000001" green="0.50850099329999998" blue="0.85232251879999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="indicatorLength">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="indicatorSpace">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="indicatorType">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="indicator">
+                                        <integer key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yK3-Sm-cQE">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="6bA-5z-vB2"/>
+                                    <constraint firstAttribute="width" constant="200" id="V7N-Ec-Ch3"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="qzi-ea-SxJ">
                                     <size key="itemSize" width="200" height="200"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UICollectionViewCell" id="EgE-8O-zSc">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UICollectionViewCell" id="Ul0-BC-9gP">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -108,26 +177,32 @@
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Px7-MZ-kqg"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Rne-8L-5tf"/>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="nR5-sj-d6O"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="txm-ck-zna"/>
                                 </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="yIQ-BV-aBF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="FTI-D9-HFC"/>
-                            <constraint firstItem="yIQ-BV-aBF" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="HdY-F0-iZT"/>
-                            <constraint firstItem="blB-CI-UsH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="R16-Qe-aI2"/>
-                            <constraint firstItem="9Hn-9g-Wmw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UOG-Yi-OZU"/>
-                            <constraint firstItem="blB-CI-UsH" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="k7h-Dc-zl4"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="9Hn-9g-Wmw" secondAttribute="bottom" constant="20" id="r3t-cJ-G0h"/>
+                            <constraint firstAttribute="trailing" secondItem="PT4-nj-Sbj" secondAttribute="trailing" constant="16" id="4hE-2E-8yl"/>
+                            <constraint firstItem="PT4-nj-Sbj" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="CAF-OG-n9e"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="9Hn-9g-Wmw" secondAttribute="bottom" constant="8" id="Cyq-Dj-NM9"/>
+                            <constraint firstItem="9Hn-9g-Wmw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DfC-kx-GFX"/>
+                            <constraint firstItem="blB-CI-UsH" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="DfJ-qQ-913"/>
+                            <constraint firstItem="yK3-Sm-cQE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RXq-2l-Amy"/>
+                            <constraint firstItem="d6o-yb-7T1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="W8N-mJ-bhy"/>
+                            <constraint firstItem="blB-CI-UsH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="buG-3g-y4f"/>
+                            <constraint firstItem="yK3-Sm-cQE" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="cjy-4g-Vv8"/>
+                            <constraint firstItem="d6o-yb-7T1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="geM-4b-S9U"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Lets try!" id="Zqf-O2-vQ4"/>
                     <connections>
-                        <outlet property="horizontalPageControl" destination="9Hn-9g-Wmw" id="taQ-SI-92F"/>
-                        <outlet property="pageCollectionView" destination="yIQ-BV-aBF" id="Q5Q-Jg-Jk7"/>
-                        <outlet property="verticalPageControl" destination="blB-CI-UsH" id="8bA-qD-eoT"/>
+                        <outlet property="circlePageControl" destination="blB-CI-UsH" id="OCl-TG-nMv"/>
+                        <outlet property="pageCollectionView" destination="yK3-Sm-cQE" id="3yj-Ac-XXr"/>
+                        <outlet property="squarePageControl" destination="d6o-yb-7T1" id="IqQ-EC-2db"/>
+                        <outlet property="triangleNegativePageControl" destination="PT4-nj-Sbj" id="qZe-xA-t38"/>
+                        <outlet property="trianglePositivePageControl" destination="9Hn-9g-Wmw" id="epE-r4-DP5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

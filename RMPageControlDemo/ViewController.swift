@@ -11,15 +11,21 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var pageCollectionView: UICollectionView!
-    @IBOutlet weak var horizontalPageControl: RMShapesPageControl!
-    @IBOutlet weak var verticalPageControl: RMShapesPageControl!
+    @IBOutlet var pageControl: [RMShapesPageControl]!
+    
+    @IBOutlet var squarePageControl: RMShapesPageControl!
+    @IBOutlet var circlePageControl: RMShapesPageControl!
+    @IBOutlet var trianglePositivePageControl: RMShapesPageControl!
+    @IBOutlet var triangleNegativePageControl: RMShapesPageControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        horizontalPageControl.numberOfPages = pageCollectionView.numberOfItems(inSection: 0)
-        verticalPageControl.numberOfPages = pageCollectionView.numberOfItems(inSection: 0)
+        squarePageControl.numberOfPages = pageCollectionView.numberOfItems(inSection: 0)
+        circlePageControl.numberOfPages = pageCollectionView.numberOfItems(inSection: 0)
+        trianglePositivePageControl.numberOfPages = pageCollectionView.numberOfItems(inSection: 0)
+        triangleNegativePageControl.numberOfPages = pageCollectionView.numberOfItems(inSection: 0)
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,8 +53,10 @@ extension ViewController: UICollectionViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         
         let page = scrollView.contentOffset.x / scrollView.frame.width
-        horizontalPageControl.currentPage = Int(page)
-        verticalPageControl.currentPage = Int(page)
+        squarePageControl.currentPage = Int(page)
+        circlePageControl.currentPage = Int(page)
+        trianglePositivePageControl.currentPage = Int(page)
+        triangleNegativePageControl.currentPage = Int(page)
     }
 }
 
