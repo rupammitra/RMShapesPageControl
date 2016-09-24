@@ -16,8 +16,7 @@ enum Direction: Int {
 enum IndicatorType: Int {
     case square = 1
     case circle = 2
-    case trianglePositive = 3
-    case triangleNegative = 4
+    case triangle = 3
 }
 
 @IBDesignable
@@ -45,6 +44,18 @@ class RMShapesPageControl: UIControl {
     @IBInspectable var indicator: Int = 1 {
         didSet {
             indicatorType = IndicatorType(rawValue: indicator)!
+        }
+    }
+    
+    var direction: Direction = .positive {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
+    
+    @IBInspectable var directionable: Int = 1 {
+        didSet {
+            direction = Direction(rawValue: directionable)!
         }
     }
     
@@ -169,10 +180,8 @@ class RMShapesPageControl: UIControl {
             context.fill(dotRect)
         case .circle:
             context.fillEllipse(in: dotRect)
-        case .trianglePositive:
-            createTriangle(drawRect: dotRect, inDirection: .positive)
-        case .triangleNegative:
-            createTriangle(drawRect: dotRect, inDirection: .negative)
+        case .triangle:
+            createTriangle(drawRect: dotRect, inDirection: direction)
         }
     }
     
