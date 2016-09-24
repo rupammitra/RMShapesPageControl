@@ -11,7 +11,6 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var pageCollectionView: UICollectionView!
-    @IBOutlet var pageControl: [RMShapesPageControl]!
     
     @IBOutlet var squarePageControl: RMShapesPageControl!
     @IBOutlet var circlePageControl: RMShapesPageControl!
