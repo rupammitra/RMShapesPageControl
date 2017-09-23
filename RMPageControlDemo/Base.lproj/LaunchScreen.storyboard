@@ -1,68 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A270f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="URL-3i-wDw">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="EHf-IW-A2E">
+        <scene sceneID="GVg-3b-lw4">
             <objects>
-                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                <viewController id="URL-3i-wDw" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
-                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                        <viewControllerLayoutGuide type="top" id="Fu5-fX-UHl"/>
+                        <viewControllerLayoutGuide type="bottom" id="5br-7U-2F5"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <view key="view" contentMode="scaleToFill" id="mhB-cc-Lpp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Square Page Control" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n8v-6b-Kk3">
-                                <rect key="frame" x="160" y="190" width="280" height="219"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Square Page Control" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FXO-qH-t92">
+                                <rect key="frame" x="48" y="224" width="280" height="219"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="280" id="QOS-JC-MmF"/>
-                                    <constraint firstAttribute="height" constant="219" id="awU-7V-kEf"/>
+                                    <constraint firstAttribute="width" constant="280" id="H7p-nu-yBH"/>
+                                    <constraint firstAttribute="height" constant="219" id="gaV-SR-TwP"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="50"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright © 2016 Rupam Mitra. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dPb-C8-LEf">
-                                <rect key="frame" x="152" y="571" width="296" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright © 2016 Rupam Mitra. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cOG-bl-nuZ">
+                                <rect key="frame" x="43" y="638" width="290" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="Gnh-6B-oIE"/>
-                                    <constraint firstAttribute="height" constant="21" id="TPc-KS-SfR"/>
-                                    <constraint firstAttribute="width" constant="296" id="VAB-AG-Xl7"/>
-                                    <constraint firstAttribute="width" constant="360" id="VBi-0I-LIk"/>
+                                    <constraint firstAttribute="height" constant="21" id="dNw-Mo-mR0"/>
+                                    <constraint firstAttribute="height" constant="21" id="hDv-QZ-gia"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="TPc-KS-SfR"/>
-                                        <exclude reference="VBi-0I-LIk"/>
+                                        <exclude reference="hDv-QZ-gia"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="30" y="781" width="360" height="21"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="TPc-KS-SfR"/>
-                                        <include reference="VBi-0I-LIk"/>
+                                        <include reference="hDv-QZ-gia"/>
                                     </mask>
                                 </variation>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.28728589415550232" green="0.1402067244052887" blue="0.30659055709838867" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.2872858942" green="0.14020672440000001" blue="0.30659055709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="n8v-6b-Kk3" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="0Ql-Vi-KA3"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="dPb-C8-LEf" secondAttribute="bottom" constant="8" id="AWb-64-AZk"/>
-                            <constraint firstItem="dPb-C8-LEf" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="CTi-ey-GaQ"/>
-                            <constraint firstItem="n8v-6b-Kk3" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="OSi-ZN-TQN"/>
+                            <constraint firstItem="FXO-qH-t92" firstAttribute="centerY" secondItem="mhB-cc-Lpp" secondAttribute="centerY" id="0wK-yX-IbM"/>
+                            <constraint firstItem="cOG-bl-nuZ" firstAttribute="centerX" secondItem="mhB-cc-Lpp" secondAttribute="centerX" id="jyq-oo-ftT"/>
+                            <constraint firstItem="5br-7U-2F5" firstAttribute="top" secondItem="cOG-bl-nuZ" secondAttribute="bottom" constant="8" id="uFj-8c-GhT"/>
+                            <constraint firstItem="FXO-qH-t92" firstAttribute="centerX" secondItem="mhB-cc-Lpp" secondAttribute="centerX" id="v3O-w7-Nqo"/>
                         </constraints>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jTZ-4b-ege" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="320" y="312"/>
         </scene>
