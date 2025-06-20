@@ -1,11 +1,10 @@
 # RMShapesPageControl
 
-![alt tag](https://github.com/rupammitra/RMShapesPageControl/blob/master/Screenshots/Shapes.png)![alt tag](https://github.com/rupammitra/RMSquarePageControl/blob/master/Screenshots/RMSquarePageControl.gif)
+![alt tag](https://github.com/rupammitra/RMShapesPageControl/blob/master/Screenshots/RMShapesPageControl.png)![alt tag](https://github.com/rupammitra/RMSquarePageControl/blob/master/Screenshots/RMShapesPageControl.gif)
 
 ## Usage
 
-1. Drag and drop the RMShapesPageControl.swift into your project and use it.
-2. Number of pages can be set dynamically from code even as per requirement.
+Easy peasy, just drag and drop RMShapesPageControl.swift in your project and use it, don't forget the credits 😉
 
 ### Indicator Configuration
 1. Circle
