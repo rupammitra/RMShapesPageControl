@@ -1,0 +1,6 @@
+framework module Pods_RMShapesPageControl {
+  umbrella header "Pods-RMShapesPageControl-umbrella.h"
+
+  export *
+  module * { export * }
+}

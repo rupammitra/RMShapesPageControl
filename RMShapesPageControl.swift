@@ -1,215 +1,208 @@
 //
-//  RMSquarePageControl.swift
-//  SquarePageControl
+//  RMShapesPageControl.swift
+//  RMShapesPageControl
 //
-//  Created by Rupam Mitra on 20/08/16.
-//  Copyright (c) 2016 Rupam Mitra. All rights reserved.
+//  Created by Rupam Mitra on 20/06/25.
 //
 
 import UIKit
 
-enum Direction: Int {
-    case positive = 1
-    case negative = 2
+enum IndicatorType {
+    case circle
+    case square
+    case rectangleHorizontal
+    case rectangleVertical
+    case triangleUp
+    case triangleDown
+    case pentagon
+    case hexagon
 }
 
-enum IndicatorType: Int {
-    case square = 1
-    case circle = 2
-    case triangle = 3
-}
-
-@IBDesignable
 class RMShapesPageControl: UIControl {
-
-    fileprivate let kDotLength: CGFloat = 4.0
-    fileprivate let kDotSpace: CGFloat = 12.0
     
+    var numberOfPages: Int = 0 {
+        didSet { setupIndicators() }
+    }
+
+    var currentPage: Int = 0 {
+        didSet { updateIndicators() }
+    }
+
+    var shape: IndicatorType = .circle {
+        didSet { setupIndicators() }
+    }
+
+    var indicatorSize: CGSize = CGSize(width: 12, height: 12) {
+        didSet { setupIndicators() }
+    }
+
+    var indicatorSpacing: CGFloat = 8 {
+        didSet { setupIndicators() }
+    }
+
+    var currentPageTintColor: UIColor = .systemBlue
+    var pageIndicatorTintColor: UIColor = .lightGray
+
+    var isVertical: Bool = false {
+        didSet { setNeedsLayout() }
+    }
+
+    private var indicators: [CAShapeLayer] = []
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.clear
+        isUserInteractionEnabled = true
     }
-    
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)!
-        self.backgroundColor = UIColor.clear
-    }
-    
-    var indicatorType: IndicatorType = .square {
-        didSet {
-            setNeedsDisplay()
-        }
-    }
-    
-    @IBInspectable var indicator: Int = 1 {
-        didSet {
-            indicatorType = IndicatorType(rawValue: indicator)!
-        }
-    }
-    
-    var direction: Direction = .positive {
-        didSet {
-            setNeedsDisplay()
-        }
-    }
-    
-    @IBInspectable var directionable: Int = 1 {
-        didSet {
-            direction = Direction(rawValue: directionable)!
-        }
-    }
-    
-    @IBInspectable var numberOfPages: Int = 0 {
-        didSet {
-            let center = self.center
-            self.center = center
-            self.currentPage = min(max(0, self.currentPage), numberOfPages - 1)
-            self.setNeedsDisplay()
-            if hidesForSinglePage == true && numberOfPages < 2 {
-                self.isHidden = true
-            }else {
-                self.isHidden = false
-            }
-        }
-    }
-    
-    @IBInspectable var currentPage: Int = 0 {
-        willSet {
-            if currentPage == newValue {
-                return
-            }
-        }
-        didSet {
-            currentPage = min(max(0, currentPage), numberOfPages - 1)
-            if defersCurrentPageDisplay == false {
-                setNeedsDisplay()
-            }
-        }
-    }
-    
-    @IBInspectable var hidesForSinglePage: Bool = false {
-        didSet {
-            if hidesForSinglePage == true && numberOfPages < 2 {
-                isHidden = true
-            }
-        }
-    }
-    
-    var defersCurrentPageDisplay: Bool = false
-    
-    @IBInspectable var currentPageColor: UIColor? {
-        didSet {
-            setNeedsDisplay()
-        }
-    }
-    
-    @IBInspectable var otherPagesColor: UIColor? {
-        didSet {
-            setNeedsDisplay()
-        }
-    }
-    
-    @IBInspectable var indicatorLength: CGFloat = 4.0 {
-        didSet {
-            setNeedsDisplay()
-        }
-    }
-    
-    @IBInspectable var indicatorSpace: CGFloat = 12.0 {
-        didSet {
-            setNeedsDisplay()
-        }
-    }
-    
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    final override func draw(_ rect: CGRect) {
-        super.draw(rect)
-        // Drawing code
-        let context: CGContext = UIGraphicsGetCurrentContext()!
-        
-        context.saveGState()
-        context.setAllowsAntialiasing(true)
-        
-        let length = (indicatorLength > 0) ? indicatorLength : kDotLength
-        let space = (indicatorSpace > 0) ? indicatorSpace : kDotSpace
 
-        let currentBounds = bounds
-        let dotsWidth = CGFloat(numberOfPages) * length + CGFloat(max(0, numberOfPages - 1)) * space
-        
-        var x: CGFloat = 0.0
-        var y: CGFloat = 0.0
-        
-        if frame.height > frame.width {
-            x = currentBounds.midX - length / 2
-            y = currentBounds.midY - dotsWidth / 2
-        }else {
-            x = currentBounds.midX - dotsWidth / 2
-            y = currentBounds.midY - length / 2
-        }
-        
-        let drawOnColor: UIColor = (currentPageColor != nil) ? currentPageColor! : UIColor(white: 1.0, alpha: 1.0)
-        let drawOffColor: UIColor = (otherPagesColor != nil) ? otherPagesColor! : UIColor(white: 0.7, alpha: 0.5)
-        
-        for i in 0 ..< numberOfPages {
-            
-            let dotRect: CGRect = CGRect(x: x, y: y, width: length, height: length)
-            
-            if i == self.currentPage {
-                context.setFillColor(drawOnColor.cgColor)
-                createShapes(inContext: context, forDotRect: dotRect)
-            }else{
-                context.setFillColor(drawOffColor.cgColor)
-                createShapes(inContext: context, forDotRect: dotRect)
-            }
-            
-            if self.frame.height > self.frame.width {
-                y += length + space
-            }else {
-                x += length + space
-            }
-        }
-        
-        // restore the context
-        context.restoreGState()
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        isUserInteractionEnabled = true
     }
-    
-    func createShapes(inContext context: CGContext, forDotRect dotRect: CGRect) {
-        switch indicatorType {
-        case .square:
-            context.fill(dotRect)
+
+    private func setupIndicators() {
+        indicators.forEach { $0.removeFromSuperlayer() }
+        indicators = []
+
+        for i in 0..<numberOfPages {
+            let layer = CAShapeLayer()
+            layer.path = path(for: shape, in: CGRect(origin: .zero, size: indicatorSize)).cgPath
+            layer.fillColor = (i == currentPage ? currentPageTintColor : pageIndicatorTintColor).cgColor
+            self.layer.addSublayer(layer)
+            indicators.append(layer)
+        }
+        setNeedsLayout()
+    }
+
+    private func updateIndicators() {
+        for (index, layer) in indicators.enumerated() {
+            layer.fillColor = (index == currentPage ? currentPageTintColor : pageIndicatorTintColor).cgColor
+        }
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        let count = CGFloat(numberOfPages)
+        let size = indicatorSize
+        let spacing = indicatorSpacing
+
+        for (index, layer) in indicators.enumerated() {
+            let origin: CGPoint
+            if isVertical {
+                let totalHeight = count * size.height + (count - 1) * spacing
+                let startY = (bounds.height - totalHeight) / 2
+                let y = startY + CGFloat(index) * (size.height + spacing)
+                origin = CGPoint(x: (bounds.width - size.width) / 2, y: y)
+            } else {
+                let totalWidth = count * size.width + (count - 1) * spacing
+                let startX = (bounds.width - totalWidth) / 2
+                let x = startX + CGFloat(index) * (size.width + spacing)
+                origin = CGPoint(x: x, y: (bounds.height - size.height) / 2)
+            }
+            let frame = CGRect(origin: origin, size: size)
+            layer.path = path(for: shape, in: frame).cgPath
+            layer.frame = bounds
+        }
+    }
+
+    private func path(for shape: IndicatorType, in rect: CGRect) -> UIBezierPath {
+        switch shape {
         case .circle:
-            context.fillEllipse(in: dotRect)
-        case .triangle:
-            createTriangle(drawRect: dotRect, inDirection: direction)
+            return UIBezierPath(ovalIn: rect)
+        case .square:
+            return UIBezierPath(rect: rect)
+        case .rectangleHorizontal:
+            var r = rect
+            r.size.width *= 1.5
+            return UIBezierPath(roundedRect: r, cornerRadius: 3)
+        case .rectangleVertical:
+            var r = rect
+            r.size.height *= 1.5
+            return UIBezierPath(roundedRect: r, cornerRadius: 3)
+        case .triangleUp:
+            return trianglePath(upward: true, in: rect)
+        case .triangleDown:
+            return trianglePath(upward: false, in: rect)
+        case .pentagon:
+            return polygonPath(sides: 5, in: rect)
+        case .hexagon:
+            return polygonPath(sides: 6, in: rect)
         }
     }
-    
-    func createTriangle(drawRect: CGRect, inDirection direction: Direction) {
-        let trianglePath = UIBezierPath()
-        if self.frame.height > self.frame.width {
-            trianglePath.move(to: CGPoint(x: drawRect.midX, y:drawRect.minY))
-            trianglePath.addLine(to: CGPoint(x:direction == .positive ? drawRect.maxX : drawRect.minX, y:drawRect.midY))
-            trianglePath.addLine(to: CGPoint(x:drawRect.midX, y:drawRect.maxY))
-        }else {
-            trianglePath.move(to: CGPoint(x: drawRect.minX, y:drawRect.midY))
-            trianglePath.addLine(to: CGPoint(x:drawRect.midX, y:direction == .positive ? drawRect.minY : drawRect.maxY))
-            trianglePath.addLine(to: CGPoint(x:drawRect.maxX, y:drawRect.midY))
+
+    private func trianglePath(upward: Bool, in rect: CGRect) -> UIBezierPath {
+        let path = UIBezierPath()
+        let midX = rect.midX
+        let minX = rect.minX
+        let maxX = rect.maxX
+        let minY = rect.minY
+        let maxY = rect.maxY
+
+        if upward {
+            path.move(to: CGPoint(x: midX, y: minY))
+            path.addLine(to: CGPoint(x: maxX, y: maxY))
+            path.addLine(to: CGPoint(x: minX, y: maxY))
+        } else {
+            path.move(to: CGPoint(x: minX, y: minY))
+            path.addLine(to: CGPoint(x: maxX, y: minY))
+            path.addLine(to: CGPoint(x: midX, y: maxY))
         }
-        trianglePath.fill()
+
+        path.close()
+        return path
     }
-    
-    fileprivate func updateCurrentPageDisplay() {
-        if defersCurrentPageDisplay == false {
-            return
+
+    private func polygonPath(sides: Int, in rect: CGRect) -> UIBezierPath {
+        let path = UIBezierPath()
+        let center = CGPoint(x: rect.midX, y: rect.midY)
+        let radius = min(rect.width, rect.height) / 2
+        let angleIncrement = CGFloat(2 * Double.pi) / CGFloat(sides)
+        let rotationOffset = CGFloat(-Double.pi / 2)
+
+        for i in 0..<sides {
+            let angle = angleIncrement * CGFloat(i) + rotationOffset
+            let point = CGPoint(
+                x: center.x + radius * cos(angle),
+                y: center.y + radius * sin(angle)
+            )
+            if i == 0 {
+                path.move(to: point)
+            } else {
+                path.addLine(to: point)
+            }
         }
-        setNeedsDisplay()
+        path.close()
+        return path
     }
-    
-    fileprivate func sizeForNumberOfPages(_ pageCount: NSInteger) -> CGSize {
-        
-        let length: CGFloat = (indicatorLength > 0) ? indicatorLength : kDotLength
-        let space: CGFloat = (indicatorSpace > 0) ? indicatorSpace : kDotSpace
-        return CGSize(width: max(44.0, length + 4.0), height: CGFloat(pageCount) * length + CGFloat((pageCount - 1)) * space + 44.0)
+
+    // Optional: Touch to change page
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let location = touches.first?.location(in: self) else { return }
+        for (index, _) in indicators.enumerated() {
+            let size = indicatorSize
+            let spacing = indicatorSpacing
+            let count = CGFloat(numberOfPages)
+
+            if isVertical {
+                let totalHeight = count * size.height + (count - 1) * spacing
+                let startY = (bounds.height - totalHeight) / 2
+                let y = startY + CGFloat(index) * (size.height + spacing)
+                let rect = CGRect(x: (bounds.width - size.width) / 2, y: y, width: size.width, height: size.height)
+                if rect.contains(location) {
+                    currentPage = index
+                    sendActions(for: .valueChanged)
+                    break
+                }
+            } else {
+                let totalWidth = count * size.width + (count - 1) * spacing
+                let startX = (bounds.width - totalWidth) / 2
+                let x = startX + CGFloat(index) * (size.width + spacing)
+                let rect = CGRect(x: x, y: (bounds.height - size.height) / 2, width: size.width, height: size.height)
+                if rect.contains(location) {
+                    currentPage = index
+                    sendActions(for: .valueChanged)
+                    break
+                }
+            }
+        }
     }
 }
